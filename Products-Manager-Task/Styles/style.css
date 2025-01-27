@@ -113,3 +113,10 @@ h2, h3 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.is-valid {
+  box-shadow: 0 0 5px #28a745 !important;
+}
+
+.is-invalid {
+  box-shadow: 0 0 5px #dc3545 !important;
+}
