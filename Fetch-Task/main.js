@@ -1,20 +1,25 @@
-const url = "https://jsonplaceholder.typicode.com/posts";
+document
+  .getElementById("userForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-fetch(url)
-  .then((res) => res.json())
-  .then((result) => DisplayData(result))
-  .catch((error) => console.log(error));
+    const url = "https://jsonplaceholder.typicode.com/posts";
 
-function DisplayData(Data) {
-  var result = ``;
+    const data = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      age: document.getElementById("age").value,
+      email: document.getElementById("email").value,
+    };
 
-  for (var i = 0; i < Data.length; i++) {
-    result += `
-        <div class="post">
-            <h2>${Data[i].title}</h2>
-            <p>${Data[i].body}</p>
-        </div>
-        `;
-  }
-  document.getElementById("result").innerHTML = result;
-}
+    let Post = {
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+
+    fetch(url, Post)
+      .then((res) => res.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  });
+
